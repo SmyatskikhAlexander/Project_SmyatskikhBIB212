@@ -7,7 +7,7 @@ def check(a):
     '''
     Проверить правильность введенного пользователем ответа
     а - набор вводимых пользователем символов (dict)
-    x - значение, по которому определяется правильность ввода ключевого набора символов
+    return x - выводится значение, которое служит "флагом", по которому определяется правильность ввода ключевого набора символов
     '''
     if "пароль" == a[0]:
         x = 1
@@ -20,7 +20,7 @@ def check_level2(a):
     '''
     Проверить правильность введенного пользователем ответа
     а - набор вводимых пользователем символов (dict)
-    x - значение, по которому определяется правильность ввода ключевого набора символов
+    return x - выводится значение, которое служит "флагом", по которому определяется правильность ввода ключевого набора символов
     '''
     if "1946" == a[0]:
         x = 1
@@ -33,7 +33,7 @@ def check_level3(a):
     '''
     Проверить правильность введенного пользователем ответа
     а - набор вводимых пользователем символов (dict)
-    x - значение, по которому определяется правильность ввода ключевого набора символов
+    return x - выводится значение, которое служит "флагом", по которому определяется правильность ввода ключевого набора символов
     '''
     if "1954" == a[0]:
         x = 1
@@ -60,7 +60,7 @@ def check_level5(a):
     Проверить правильность введенного пользователем ответа
     а - набор вводимых пользователем символов (dict)
     Допустимых значений три, поскольку все ответы являются полностью верными
-    x - значение, по которому определяется правильность ввода ключевого набора символов
+    return x - выводится значение, которое служит "флагом", по которому определяется правильность ввода ключевого набора символов
     '''
     if ("229" ==  a[0]) or ("922" == a[0]) or ("292" == a[0]):
         x= 1
@@ -74,7 +74,7 @@ def check_level6(a):
     Проверить правильность введенного пользователем ответа
     а - набор вводимых пользователем символов (dict)
     Допустимых значений два, поскольку оба ответа являются полностью верными
-    x - значение, по которому определяется правильность ввода ключевого набора символов
+    return x - выводится значение, которое служит "флагом", по которому определяется правильность ввода ключевого набора символов
     '''
     if 'ботайте олимпиаду' == a[0] or 'Ботайте олимпиаду' == a[0]:
         x = 1
@@ -88,7 +88,7 @@ def check_level7(a):
     Проверить правильность введенного пользователем ответа
     а - набор вводимых пользователем символов (dict)
     Допустимых значений два, поскольку оба ответа являются полностью верными
-    x - значение, по которому определяется правильность ввода ключевого набора символов
+    return x - выводится значение, которое служит "флагом", по которому определяется правильность ввода ключевого набора символов
     '''
     if ("Alan Turing" == a[0]) or ("Алан Тьюринг" == a[0]):
         x = 1
@@ -247,108 +247,107 @@ def information():
             [psg.Button('Выйти')]]
     return psg.Window('Руководство', k, finalize=True)
 
-'''
-Окна, без вызова
-'''
-window1, window2, window3, window4 = start1(), None, None , None
-window5, window6, window7, window8 = None, None, None, None
-window9, window10 = None, None
-flag = False
+if __name__ == '__main__':
+    # Окна, без вызова
 
-'''
-Бесконечный цикл, за счет которого программа будет идти "бесконечно", иными словами, пока пользователей ее не закроет или не пройдет"
-window, event, values = psg.read_all_windows() - считывание информации с окна, после которой по событиям (event) определяется хот программы
-window3 и window5 не сразу закрывают программу, выполняя break, потому что это окна "information" и "fake_button", следовательно, после закрытия их программа не должна завершаться
-После событий ("event") которые закрывали бы окна или всю программу идут вызову уровней и функций, по типу ошибки("mistake"). 
-'''
-while True:
-    window, event, values = psg.read_all_windows()
-    if event == psg.WIN_CLOSED or event == 'Выйти' or event == "Попробовать еще раз":
-        if event == "Попробовать еще раз":
-            window5.close()
-        elif window == window10:
-            window10.close()
-            break
-        elif window == window9:
-            window9.close()
-            break
-        elif window == window8:
-            window8.close()
-            break
-        elif window == window6:
-            window6.close()
-            break
-        elif window == window4:
-            window4.close()
-            break
-        elif window == window3:
-            if window == None:
-                continue
-            else:
-                window3.close()
-        elif window == window5:
-            if window == None:
-                continue
-            else:
+    window1, window2, window3, window4 = start1(), None, None , None
+    window5, window6, window7, window8 = None, None, None, None
+    window9, window10 = None, None
+    flag = False
+
+    #Бесконечный цикл, за счет которого программа будет идти "бесконечно", иными словами, пока пользователей ее не закроет или не пройдет"
+    #window, event, values = psg.read_all_windows() - считывание информации с окна, после которой по событиям (event) определяется хот программы
+    #window3 и window5 не сразу закрывают программу, выполняя break, потому что это окна "information" и "fake_button",
+    #следовательно, после закрытия их программа не должна завершаться
+    #После событий ("event") которые закрывали бы окна или всю программу идут вызову уровней и функций, по типу ошибки("mistake")
+    while True:
+        window, event, values = psg.read_all_windows()
+        if event == psg.WIN_CLOSED or event == 'Выйти' or event == "Попробовать еще раз":
+            if event == "Попробовать еще раз":
                 window5.close()
-        elif window == window2:
-            window2.close()
-            break
-        elif window == window1:
-            window1.close()
-            break
-        else:
-            if window == None:
-                continue
+            elif window == window10:
+                window10.close()
+                break
+            elif window == window9:
+                window9.close()
+                break
+            elif window == window8:
+                window8.close()
+                break
+            elif window == window6:
+                window6.close()
+                break
+            elif window == window4:
+                window4.close()
+                break
+            elif window == window3:
+                if window == None:
+                    continue
+                else:
+                    window3.close()
+            elif window == window5:
+                if window == None:
+                    continue
+                else:
+                    window5.close()
+            elif window == window2:
+                window2.close()
+                break
+            elif window == window1:
+                window1.close()
+                break
             else:
-                window.close()
-            break
-    elif event == 'Руководство':
-        window3 = information()
-    elif event == 'Руководство ':
-        window8 = level5()
-    elif event == 'Поехали':
-        window2 = level1()
-    elif event == 'Переход на второй уровень' and window2:
-        number = check(values)
-        if number == 1:
-            window4 = level2()
-        else:
-            window5 = mistake()
-    elif event == 'Переход на третий уровень' and window4:
-        number = check_level2(values)
-        if number == 1:
-            window6 = level3()
-        else:
-            window5 = mistake()
-    elif event == 'Переход на четвертый уровень' and window6:
-        number = check_level3(values)
-        if number == 1:
-            window7 = level4()
-        else:
-            window5 = mistake()
-    elif event == 'Переход на пятый уровень' and window7:
-        fake_button()
-    elif event == 'Переход на шестой уровень' and window8:
-        number = check_level5(values)
-        if number == 1:
-            window9 = level6()
-        else:
-            window5 = mistake()
-    elif event == 'Переход на финальный уровень' and window9:
-        number = check_level6(values)
-        if number == 1:
-            window10 = level7()
-        else:
-            window5 = mistake()
-    elif event == 'Проверить финальную строку' and window10:
-        flag = True
-        number = check_level7(values)
-        if number == 1:
-            a = picture()
-            break
-        else:
-            window5 = mistake()
-    '''
+                if window == None:
+                    continue
+                else:
+                    window.close()
+                break
+        elif event == 'Руководство':
+            window3 = information()
+        elif event == 'Руководство ':
+            window8 = level5()
+        elif event == 'Поехали':
+            window2 = level1()
+        elif event == 'Переход на второй уровень' and window2:
+            number = check(values)
+            if number == 1:
+                window4 = level2()
+            else:
+                window5 = mistake()
+        elif event == 'Переход на третий уровень' and window4:
+            number = check_level2(values)
+            if number == 1:
+                window6 = level3()
+            else:
+                window5 = mistake()
+        elif event == 'Переход на четвертый уровень' and window6:
+            number = check_level3(values)
+            if number == 1:
+                window7 = level4()
+            else:
+                window5 = mistake()
+        elif event == 'Переход на пятый уровень' and window7:
+            fake_button()
+        elif event == 'Переход на шестой уровень' and window8:
+            number = check_level5(values)
+            if number == 1:
+                window9 = level6()
+            else:
+                window5 = mistake()
+        elif event == 'Переход на финальный уровень' and window9:
+            number = check_level6(values)
+            if number == 1:
+                window10 = level7()
+            else:
+                window5 = mistake()
+        elif event == 'Проверить финальную строку' and window10:
+            flag = True
+            number = check_level7(values)
+            if number == 1:
+                a = picture()
+                break
+            else:
+                window5 = mistake()
+                '''
     a = picture() - вызывается функция завершающая программу, которая выводит картинку, поздравляющую пользователя с успешным прохождением игры
     '''
